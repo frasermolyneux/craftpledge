@@ -1,0 +1,46 @@
+name: PR Verify
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
+permissions: {}
+
+jobs:
+  build-and-test:
+    permissions:
+      contents: read
+      id-token: write
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: frasermolyneux/actions/dotnet-web-ci@dotnet-web-ci/v1.4
+        with:
+          dotnet-project: "MX.CraftPledge.Web"
+          dotnet-version: 10.0.x
+          src-folder: "src"
+
+  terraform-plan-dev:
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    if: github.event.pull_request.draft == false && !contains(github.event.pull_request.labels.*.name, 'deploy-dev')
+    needs: build-and-test
+    environment: Development
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.repository }}-dev
+    env:
+      AZURE_CLIENT_ID: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && vars.AZURE_PLAN_CLIENT_ID || vars.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+    steps:
+      - uses: frasermolyneux/actions/terraform-plan@terraform-plan/v1.4
+        with:
+          terraform-folder: "terraform"
+          terraform-var-file: "tfvars/dev.tfvars"
+          terraform-backend-file: "backends/dev.backend.hcl"
+          AZURE_CLIENT_ID: ${{ env.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ env.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ env.AZURE_SUBSCRIPTION_ID }}

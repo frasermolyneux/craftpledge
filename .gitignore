@@ -1,0 +1,30 @@
+
+# Shared Copilot configuration checked out during copilot-setup-steps
+.github-copilot/
+
+# .NET build artifacts
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.cache
+*.vs/
+.vscode/
+
+# NuGet
+*.nupkg
+**/packages/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc

@@ -1,0 +1,59 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - "feature/**"
+      - "bugfix/**"
+      - "hotfix/**"
+
+permissions: {}
+
+jobs:
+  detect-changes:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    outputs:
+      src: ${{ steps.changes.outputs.src }}
+      terraform: ${{ steps.changes.outputs.terraform }}
+    steps:
+      - id: changes
+        uses: frasermolyneux/actions/detect-changes@detect-changes/v1.0
+        with:
+          filters: |
+            src:src/**
+            terraform:terraform/**
+
+  build-and-test:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.src == 'true'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: frasermolyneux/actions/dotnet-web-ci@dotnet-web-ci/v1.4
+        with:
+          dotnet-project: "MX.CraftPledge.Web"
+          dotnet-version: 10.0.x
+          src-folder: "src"
+
+  terraform-plan-dev:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.terraform == 'true'
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    environment: Development
+    concurrency:
+      group: ${{ github.repository }}-dev
+    steps:
+      - uses: frasermolyneux/actions/terraform-plan@terraform-plan/v1.4
+        with:
+          terraform-folder: "terraform"
+          terraform-var-file: "tfvars/dev.tfvars"
+          terraform-backend-file: "backends/dev.backend.hcl"
+          AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}

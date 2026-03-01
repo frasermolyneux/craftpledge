@@ -1,0 +1,201 @@
+@{
+    ViewData["Title"] = "FAQ";
+}
+
+<section class="page-header">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead">Everything you need to know about CraftPledge.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:850px;">
+        <div class="accordion accordion-cp" id="faqAccordion">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                        What is CraftPledge?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        CraftPledge is a certification mark for human-made work. We provide a trusted, verifiable way
+                        for creators and businesses to demonstrate that their products and services are genuinely
+                        made by humans &mdash; with transparency about how AI may or may not have been involved in
+                        the process.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        How does certification work?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Creators and businesses apply for certification by selecting the tier that honestly reflects
+                        their process (Craft Assisted, Craft Verified, or Craft Pure). They submit information about
+                        how their work is made, which is reviewed through our verification process. Once approved,
+                        they receive the CraftPledge mark for their tier level and can display it on their products
+                        and marketing materials.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                        What counts as &ldquo;AI&rdquo;?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        For the purposes of CraftPledge certification, &ldquo;AI&rdquo; refers to generative artificial
+                        intelligence systems &mdash; tools that can create text, images, code, music, or other content
+                        based on prompts or inputs. This includes large language models, image generators, code
+                        completion tools, and similar systems. Traditional software tools (calculators, spell-checkers,
+                        design software, compilers) are not considered AI in our framework.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                        Can I use spell-check / grammar tools and still be certified?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes. Traditional spell-checkers, grammar tools, and basic autocorrect are not considered
+                        generative AI for the purposes of CraftPledge certification. These tools assist with
+                        mechanical accuracy but do not generate creative content. However, AI-powered writing
+                        assistants that suggest or rewrite entire sentences or paragraphs would be considered AI
+                        usage and would place your work in the Craft Assisted tier.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                        What&rsquo;s the difference between the tiers?
+                    </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Craft Assisted:</strong> AI may have been used as a supporting tool, but a human led
+                        the process and takes responsibility for the output.<br /><br />
+                        <strong>Craft Verified:</strong> No generative AI was used in creating the final product or
+                        service. It was conceived and created entirely by humans.<br /><br />
+                        <strong>Craft Pure:</strong> No AI was used anywhere in the entire supply chain, from sourcing
+                        to delivery. This is the most rigorous standard.<br /><br />
+                        Visit our <a asp-controller="Home" asp-action="Tiers">Pledge page</a> for full details on each tier.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                        How much does certification cost?
+                    </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We are currently in the early stages of building CraftPledge and are developing our pricing
+                        model. Our goal is to make certification accessible to independent creators, small businesses,
+                        and large organisations alike. Pricing details will be announced as we approach our public
+                        launch. Sign up to be notified when applications open.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                        How do you verify claims?
+                    </button>
+                </h2>
+                <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our verification process combines self-declaration with auditing and accountability measures.
+                        Creators provide detailed information about their production process, and we use a combination
+                        of documentation review, spot checks, and community reporting to ensure accuracy. The specifics
+                        vary by tier level &mdash; higher tiers require more rigorous documentation. We are also
+                        developing technological solutions to support the verification process.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                        What happens if someone breaks the pledge?
+                    </button>
+                </h2>
+                <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Trust is the foundation of CraftPledge. If a certified creator or business is found to have
+                        misrepresented their use of AI, they face decertification and public removal from the
+                        CraftPledge directory. We take violations seriously because the entire value of the mark
+                        depends on its integrity. We also provide a process for creators to voluntarily update their
+                        tier if their process changes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false" aria-controls="faq9">
+                        Is CraftPledge anti-technology?
+                    </button>
+                </h2>
+                <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Absolutely not. CraftPledge is pro-transparency. We believe technology and AI have incredible
+                        potential to help humanity. What we oppose is the invisibility of AI usage &mdash; the inability
+                        of consumers to know whether what they&rsquo;re buying was made by a human or generated by a
+                        machine. Our Craft Assisted tier explicitly recognises that AI can be a valuable tool when a
+                        human is in charge. We are not against AI; we are for honesty. In fact, we used AI tools to
+                        help build this very website &mdash; and we&rsquo;re
+                        <a asp-controller="Home" asp-action="OurStory">completely transparent about it</a>.
+                        That&rsquo;s kind of the whole point.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false" aria-controls="faq10">
+                        How do I apply?
+                    </button>
+                </h2>
+                <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        CraftPledge is currently in development. We are building our certification platform and
+                        verification processes. If you&rsquo;re interested in being among the first to receive
+                        CraftPledge certification, we&rsquo;d love to hear from you. Watch this space for updates
+                        on when applications open, or visit our
+                        <a asp-controller="Home" asp-action="ForCreators">For Creators</a> page to learn more about
+                        what certification involves.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Still have questions?</h2>
+        <p>We&rsquo;re building CraftPledge in the open. Reach out and we&rsquo;ll be happy to help.</p>
+        <a asp-controller="Home" asp-action="ForCreators" class="btn btn-primary btn-lg me-2">For Creators</a>
+        <a asp-controller="Home" asp-action="ForConsumers" class="btn btn-outline-light btn-lg">For Consumers</a>
+    </div>
+</section>

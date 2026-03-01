@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CraftPledge</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MX.CraftPledge.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-cp sticky-top">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Craft<span>Pledge</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Manifesto">Manifesto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Tiers">The Pledge</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="OurStory">Our Story</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ForCreators">For Creators</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="ForConsumers">For Consumers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Faq">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer-cp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>CraftPledge</h5>
+                    <p>Made by humans. Verified. We exist to make the human behind the work visible again.</p>
+                </div>
+                <div class="col-lg-2 mb-4 mb-lg-0">
+                    <h5>Explore</h5>
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Home" asp-action="Manifesto">Manifesto</a></li>
+                        <li><a asp-controller="Home" asp-action="Tiers">The Pledge</a></li>
+                        <li><a asp-controller="Home" asp-action="OurStory">Our Story</a></li>
+                        <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4 mb-lg-0">
+                    <h5>Get Involved</h5>
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Home" asp-action="ForCreators">For Creators</a></li>
+                        <li><a asp-controller="Home" asp-action="ForConsumers">For Consumers</a></li>
+                        <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Connect</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Twitter / X</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; @DateTime.Now.Year CraftPledge. All rights reserved. Made by humans.*</p>
+                <p class="mb-0" style="font-size:0.75rem;opacity:0.6;margin-top:0.25rem;">*Mostly. <a asp-controller="Home" asp-action="OurStory" style="color:inherit;text-decoration:underline;">We&rsquo;re honest about it.</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
