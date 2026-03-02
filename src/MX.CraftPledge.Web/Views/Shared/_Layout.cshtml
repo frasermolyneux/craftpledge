@@ -54,6 +54,12 @@
         @RenderBody()
     </main>
 
+    @{
+        var entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
+        var informationalVersion = entryAssembly?.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "unknown";
+        var buildVersion = informationalVersion.Split('+')[0];
+        var assemblyVersion = entryAssembly?.GetName().Version?.ToString() ?? "unknown";
+    }
     <footer class="footer-cp">
         <div class="container">
             <div class="row">
@@ -89,6 +95,7 @@
             <div class="footer-bottom text-center">
                 <p class="mb-0">&copy; @DateTime.Now.Year CraftPledge. All rights reserved. Made by humans.*</p>
                 <p class="mb-0" style="font-size:0.75rem;opacity:0.6;margin-top:0.25rem;">*Mostly. <a asp-controller="Home" asp-action="OurStory" style="color:inherit;text-decoration:underline;">We&rsquo;re honest about it.</a></p>
+                <span class="float-end small" title="Full: @informationalVersion&#10;Assembly: @assemblyVersion">v@(buildVersion)</span>
             </div>
         </div>
     </footer>

@@ -1,3 +1,5 @@
+using MX.CraftPledge.Web;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -30,5 +32,7 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 app.MapDefaultEndpoints();
+
+app.MapInfoEndpoint();
 
 app.Run();
