@@ -1,5 +1,16 @@
+@using MX.CraftPledge.Web.Models
 @{
     ViewData["Title"] = "Home";
+    var latestPost = BlogPost.All.FirstOrDefault();
+    var showBanner = latestPost is not null
+        && latestPost.Published.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc).AddDays(7) >= DateTime.UtcNow;
+}
+
+@if (showBanner && latestPost is not null)
+{
+    <div class="new-post-banner">
+        📢 New post: <a asp-controller="Blog" asp-action="Post" asp-route-slug="@latestPost.Slug">@latestPost.Title</a>
+    </div>
 }
 
 <!-- Hero -->

@@ -1,0 +1,167 @@
+@{
+    ViewData["Title"] = "We Built a Blog Feature. With AI. For a Human-Craft Website.";
+}
+
+<section class="page-header">
+    <div class="container">
+        <div class="blog-date" style="color:rgba(255,248,240,0.6);">2 March 2026</div>
+        <h1>We Built a Blog Feature. With AI.<br />For a Human-Craft Website.</h1>
+        <p class="lead">CraftPledge now has a &ldquo;What&rsquo;s New&rdquo; section. Yes, an AI built it. No, the irony is not lost on us.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:750px;">
+        <div class="manifesto-text">
+
+            <p>You&rsquo;re reading the first post on CraftPledge&rsquo;s new blog. A blog that exists so we can
+                transparently share what we&rsquo;re building, how we&rsquo;re building it, and &mdash; crucially
+                &mdash; <em>who</em> (or what) is doing the building.</p>
+
+            <p>So let&rsquo;s start as we mean to go on: an AI built this feature. A human asked for it,
+                reviewed it, and approved it. That&rsquo;s our workflow, and we&rsquo;re not hiding it.</p>
+
+            <p class="pull-quote">The organisation that certifies human-made work just shipped a feature
+                using AI. We&rsquo;re nothing if not consistent in our transparency.</p>
+
+            <hr class="section-divider my-5" />
+
+            <h2 class="manifesto-heading">What&rsquo;s new, exactly?</h2>
+
+            <p>CraftPledge now has a <strong>&ldquo;What&rsquo;s New&rdquo;</strong> section &mdash; a blog for sharing
+                updates, announcements, and honest dispatches from the project. You&rsquo;ll find it in the navigation
+                bar, in the footer, and occasionally highlighted on the home page when something fresh has been
+                published.</p>
+
+            <p>But this isn&rsquo;t just any blog. Every post about a feature we&rsquo;ve built with AI includes a
+                <strong>&ldquo;Replay the Conversation&rdquo;</strong> section &mdash; a terminal-styled recreation of
+                the actual development conversation between the human and the AI that built it. Think of it as a
+                commit log for transparency.</p>
+
+            <hr class="section-divider my-5" />
+
+            <h2 class="manifesto-heading">Why a terminal, not chat bubbles?</h2>
+
+            <p>Our <a asp-controller="Home" asp-action="OurStory">&ldquo;Our Story&rdquo;</a> page shows the founding
+                conversation in chat-bubble format &mdash; warm, conversational, like two people messaging about an
+                idea over coffee. That style fits the origin story.</p>
+
+            <p>The blog replays are different. They represent <em>development work</em> &mdash; code being written,
+                decisions being made, files being created. So we styled them as a terminal window. Monospace font.
+                Command prompts. Green text on dark background. Because that&rsquo;s what it actually looked like.</p>
+
+            <p>It&rsquo;s also, frankly, a bit more honest. Chat bubbles make AI conversations look like a friendly
+                collaboration. A terminal window reminds you that this was a human typing instructions into a machine
+                &mdash; which is exactly what it was.</p>
+
+            <hr class="section-divider my-5" />
+
+            <h2 class="manifesto-heading">The meta-irony department.</h2>
+
+            <p>Let&rsquo;s take stock of where we are. CraftPledge &mdash; the organisation that exists to certify
+                human-made work &mdash; has just built a blog feature specifically designed to showcase how much of its
+                own work is done by AI. And the first post on that blog is about the blog itself.</p>
+
+            <p>We are aware.</p>
+
+            <p>But this is exactly what our <strong>Craft Assisted</strong> tier represents: AI as a tool, with a
+                human making the decisions. The human decided this feature was needed. The human specified how it
+                should work. The human reviewed every line. The AI just typed faster.</p>
+
+            <p class="pull-quote">We built the transparency into the process &mdash; literally. The system now
+                prompts us to write about what we built, every time we build something. Try hiding from that.</p>
+
+        </div>
+    </div>
+</section>
+
+<!-- Console Replay -->
+<section class="section section-alt">
+    <div class="container" style="max-width:800px;">
+        <div class="text-center mb-4">
+            <h2>Replay the Conversation</h2>
+            <hr class="section-divider" />
+            <p class="text-warm-gray">
+                A recreation of the conversation that built this feature.
+                Because transparency isn&rsquo;t just our product &mdash; it&rsquo;s our process.
+            </p>
+        </div>
+
+        <div class="console-window">
+            <div class="console-titlebar">
+                <span class="console-dot red"></span>
+                <span class="console-dot yellow"></span>
+                <span class="console-dot green"></span>
+                <span class="console-title">copilot-cli &mdash; craftpledge</span>
+            </div>
+            <div class="console-body">
+                <div class="console-line">
+                    <span class="console-prompt">$</span> I want to add a blog or "what's new" feature to the website
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt">$</span> also build in automatic prompting about how AI is being used
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt ai">&gt;</span> Researching codebase structure&hellip;
+                </div>
+                <div class="console-line console-output">
+                    &rarr; Found: HomeController.cs, 8 views, no database, brochure-style site
+                </div>
+                <div class="console-line console-comment">
+                    # The AI reads the "Our Story" page about AI transparency.
+                    While building an AI transparency feature. We're fine.
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt ai">&gt;</span> The "Our Story" page has chat bubbles for the conversation replay. I'll make the blog version look like a terminal instead &mdash; visually distinct and more code-driven.
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt">$</span> yes I like the console replay styling
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt">$</span> use separate instructions files, add "What's New" to the nav
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt">$</span> also a time-based banner on the home page for new posts
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt ai">&gt;</span> Server-side DateTime.UtcNow comparison &mdash; 7 day window. Zero maintenance.
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt">$</span> write the real first post about the blog feature. maximum irony.
+                </div>
+                <div class="console-line console-comment">
+                    # Human asks AI to write a blog post about building a blog feature
+                    with AI, for a website about human-made work. We're several layers deep now.
+                </div>
+                <div class="console-line">
+                    <span class="console-prompt ai">&gt;</span> Creating BlogController, BlogPost model, console replay CSS, 11 files&hellip;
+                </div>
+                <div class="console-line console-output">
+                    &rarr; Build succeeded. 0 warnings. 0 errors.
+                </div>
+                <div class="console-line console-muted">
+                    [An AI just built a transparency system that requires it to document its own involvement.
+                    It then wrote this console replay about writing the console replay.
+                    The recursion is the point.]
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="text-warm-gray" style="font-style:italic;font-size:0.9rem;">
+                This is a recreation of the real development session. The actual conversation involved
+                more back-and-forth, more research, and at least one clarifying question about UTC.
+                But the essence is true &mdash; every feature on this site was built by an AI,
+                directed by a human, and now documented for you to see.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Transparency is the whole point</h2>
+        <p>Read our story to understand how CraftPledge started &mdash; and why we show you everything.</p>
+        <a asp-controller="Home" asp-action="OurStory" class="btn btn-primary btn-lg">Read Our Story</a>
+    </div>
+</section>

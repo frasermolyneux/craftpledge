@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run AppHost (Aspire)",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj",
+      "preLaunchTask": "build"
+    },
+    {
+      "name": "Run Web Only",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/src/MX.CraftPledge.Web/MX.CraftPledge.Web.csproj",
+      "preLaunchTask": "build"
+    }
+  ]
+}

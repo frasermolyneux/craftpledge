@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "run-apphost",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj"
+      ],
+      "problemMatcher": "$msCompile",
+      "isBackground": true,
+      "dependsOn": "build"
+    },
+    {
+      "label": "run-web",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/src/MX.CraftPledge.Web/MX.CraftPledge.Web.csproj"
+      ],
+      "problemMatcher": "$msCompile",
+      "isBackground": true,
+      "dependsOn": "build"
+    },
+    {
+      "label": "watch-web",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/src/MX.CraftPledge.Web/MX.CraftPledge.Web.csproj"
+      ],
+      "problemMatcher": "$msCompile",
+      "isBackground": true
+    }
+  ]
+}

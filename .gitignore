@@ -11,7 +11,7 @@
 *.suo
 *.cache
 *.vs/
-.vscode/
+.vscode/settings.json
 
 # NuGet
 *.nupkg

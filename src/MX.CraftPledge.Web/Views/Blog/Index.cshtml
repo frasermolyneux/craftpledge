@@ -1,0 +1,44 @@
+@model IReadOnlyList<MX.CraftPledge.Web.Models.BlogPost>
+@{
+    ViewData["Title"] = "What's New";
+}
+
+<section class="page-header">
+    <div class="container">
+        <h1>What&rsquo;s New</h1>
+        <p class="lead">Updates, announcements, and transparent dispatches from the CraftPledge project.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:800px;">
+        @foreach (var post in Model)
+        {
+            <div class="card blog-card mb-4">
+                <div class="card-body">
+                    <div class="blog-date">@post.Published.ToString("d MMMM yyyy")</div>
+                    <h2 class="card-title" style="font-size:1.4rem;">
+                        <a asp-controller="Blog" asp-action="Post" asp-route-slug="@post.Slug"
+                           style="color:var(--cp-charcoal);text-decoration:none;">
+                            @post.Title
+                        </a>
+                    </h2>
+                    <p class="text-warm-gray mb-3">@post.Summary</p>
+                    <div>
+                        @foreach (var tag in post.Tags)
+                        {
+                            <span class="blog-tag">@tag</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!Model.Any())
+        {
+            <div class="text-center text-warm-gray py-5">
+                <p style="font-size:1.2rem;">Nothing here yet. Check back soon.</p>
+            </div>
+        }
+    </div>
+</section>
