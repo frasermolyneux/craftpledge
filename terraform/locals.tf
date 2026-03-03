@@ -5,4 +5,9 @@ locals {
   web_app_name                      = "app-${var.workload}-${var.environment}-${var.location}-${random_id.environment_id.hex}"
   app_insights_name                 = "ai-${var.workload}-${var.environment}-${var.location}"
   public_hostname                   = "${var.dns.subdomain}.${var.dns.domain}"
+
+  app_insights_sampling_percentage = {
+    dev = 25
+    prd = 75
+  }
 }
