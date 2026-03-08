@@ -40,7 +40,7 @@ jobs:
       has_resources: ${{ steps.state-check.outputs.has_resources }}
     steps:
       - id: state-check
-        uses: frasermolyneux/actions/terraform-state-check@terraform-state-check/v1.0
+        uses: frasermolyneux/actions/terraform-state-check@terraform-state-check/v1.1
         with:
           terraform-folder: "terraform"
           terraform-var-file: "tfvars/dev.tfvars"
