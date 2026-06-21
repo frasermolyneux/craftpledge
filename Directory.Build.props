@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <LangVersion>13</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Authors>Fraser Molyneux</Authors>
     <Company>Molyneux.IO</Company>
     <Copyright>Copyright © Fraser Molyneux</Copyright>
