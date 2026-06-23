@@ -14,9 +14,9 @@ This is a .NET Aspire web application for CraftPledge — a certification brand 
 
 - **Brochure site**: Static content pages (no database, no authentication). All page actions return `View()` with no model binding or data access.
 - **Aspire orchestration**: `AppHost.cs` registers the web project as `"web"` via `builder.AddProject<Projects.MX_CraftPledge_Web>("web")`. The Aspire dashboard provides telemetry during local development.
-- **Single controller**: All brochure pages live in `HomeController` (Index, Manifesto, Tiers, OurStory, ForCreators, ForConsumers, Faq, Privacy). A separate `HealthController` exposes `GET /api/health`. `BlogController` handles blog index and individual post pages.
+- **Single controller**: All brochure pages live in `HomeController` (Index, Manifesto, Tiers, OurStory, ForCreators, ForConsumers, Faq, Privacy). A separate `HealthController` exposes `GET /api/health/live` and `GET /api/health/ready`. `BlogController` handles blog index and individual post pages.
 - **Blog posts**: Static `.cshtml` views in `Views/Blog/` with metadata in `Models/BlogPost.cs`. See `.github/instructions/blog-authoring.instructions.md` for authoring guidance.
-- **ServiceDefaults pattern**: `Extensions.cs` provides `AddServiceDefaults()` and `MapDefaultEndpoints()` extension methods that configure OpenTelemetry, health checks (`/health`, `/alive`), service discovery, and HTTP resilience.
+- **ServiceDefaults pattern**: `Extensions.cs` provides `AddServiceDefaults()` and `MapDefaultEndpoints()` extension methods that configure OpenTelemetry, health checks (`/health/live`, `/health/ready`), service discovery, and HTTP resilience.
 
 ## Build and Test
 
@@ -49,7 +49,7 @@ Terraform under `terraform/` with per-environment configs:
 - Key resources: Azure Linux Web App (`.NET 10.0`, shared `platform-hosting` App Service Plan), Application Insights, DNS records
 - Providers: AzureRM ~> 4.62, Terraform >= 1.14.3
 - Remote state dependencies: `platform-monitoring` (Log Analytics workspace), `platform-hosting` (App Service Plan)
-- Health check configured at `/api/health` in the App Service
+- Health check configured at `/api/health/live` in the App Service
 
 ## CI/CD
 
