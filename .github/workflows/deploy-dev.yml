@@ -67,12 +67,14 @@ jobs:
     concurrency:
       group: ${{ github.repository }}-dev
     steps:
-      - uses: frasermolyneux/actions/deploy-app-service@deploy-app-service/v1.2
+      - uses: frasermolyneux/actions/deploy-app-service@deploy-app-service/v1.3
         name: Deploy v${{ needs.build-and-test.outputs.build_version }}
         with:
           web-artifact-name: "MX.CraftPledge.Web"
           web-app-name: ${{ needs.terraform-plan-and-apply-dev.outputs.web_app_name }}
           resource-group-name: ${{ needs.terraform-plan-and-apply-dev.outputs.web_app_resource_group }}
+          info-url: "https://${{ needs.terraform-plan-and-apply-dev.outputs.web_app_name }}.azurewebsites.net/info"
+          expected-version: ${{ needs.build-and-test.outputs.build_version }}
           AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
