@@ -2,19 +2,21 @@
 
 [![Build and Test](https://github.com/frasermolyneux/craftpledge/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/build-and-test.yml)
 [![Code Quality](https://github.com/frasermolyneux/craftpledge/actions/workflows/codequality.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/codequality.yml)
-[![PR Verify](https://github.com/frasermolyneux/craftpledge/actions/workflows/pr-verify.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/pr-verify.yml)
+[![Copilot Setup Steps](https://github.com/frasermolyneux/craftpledge/actions/workflows/copilot-setup-steps.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/copilot-setup-steps.yml)
+[![Dependabot Auto-Merge](https://github.com/frasermolyneux/craftpledge/actions/workflows/dependabot-automerge.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/dependabot-automerge.yml)
 [![Deploy Dev](https://github.com/frasermolyneux/craftpledge/actions/workflows/deploy-dev.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/deploy-dev.yml)
 [![Deploy Prd](https://github.com/frasermolyneux/craftpledge/actions/workflows/deploy-prd.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/deploy-prd.yml)
+[![Destroy Development](https://github.com/frasermolyneux/craftpledge/actions/workflows/destroy-development.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/destroy-development.yml)
+[![Destroy Environment](https://github.com/frasermolyneux/craftpledge/actions/workflows/destroy-environment.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/destroy-environment.yml)
+[![PR Verify](https://github.com/frasermolyneux/craftpledge/actions/workflows/pr-verify.yml/badge.svg)](https://github.com/frasermolyneux/craftpledge/actions/workflows/pr-verify.yml)
 
 ## Documentation
 
-* [Development Workflows](docs/development-workflows.md)
+Documentation is being expanded in the docs folder.
 
 ## Overview
 
-CraftPledge is a certification brand for human-made work in the age of AI. The website at [craftpledge.org](https://www.craftpledge.org) serves as the public-facing brochure site for the initiative — presenting the manifesto, pledge tiers, and information for creators and consumers.
-
-Built with .NET Aspire and ASP.NET Core MVC, deployed to Azure App Service on a shared hosting plan. Infrastructure is managed with Terraform and deployed via GitHub Actions.
+CraftPledge is a certification brand for human-made work in the age of AI. The website at [craftpledge.org](https://www.craftpledge.org) is a brochure-style experience that presents the manifesto, pledge tiers, and guidance for creators and consumers. It is built with .NET Aspire and ASP.NET Core MVC and hosted on Azure App Service. Infrastructure is managed with Terraform and deployed via GitHub Actions.
 
 ## Contributing
 
