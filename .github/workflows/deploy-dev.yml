@@ -14,7 +14,7 @@ jobs:
     outputs:
       build_version: ${{ steps.web-ci.outputs.build_version }}
     steps:
-      - uses: frasermolyneux/actions/dotnet-web-ci@dotnet-web-ci/v1.4
+      - uses: frasermolyneux/actions/dotnet-web-ci@dotnet-web-ci/v2
         id: web-ci
         with:
           dotnet-project: "MX.CraftPledge.Web"
