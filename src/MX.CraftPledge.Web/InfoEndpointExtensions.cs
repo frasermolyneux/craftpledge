@@ -6,7 +6,7 @@ public static class InfoEndpointExtensions
 {
     public static WebApplication MapInfoEndpoint(this WebApplication app)
     {
-        app.MapGet("/info", () =>
+        _ = app.MapGet("/info", () =>
         {
             var assembly = Assembly.GetExecutingAssembly();
             var informationalVersion = assembly

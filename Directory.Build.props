@@ -1,6 +1,9 @@
 <Project>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Brochure app public MVC/controller surface is intentionally undocumented in XML; keep docs generation on for IDE0005 support. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>

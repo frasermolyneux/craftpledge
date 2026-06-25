@@ -2,23 +2,24 @@ using MX.CraftPledge.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddServiceDefaults();
+_ = builder.AddServiceDefaults();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+_ = builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    _ = app.UseExceptionHandler("/Home/Error");
 }
-app.UseRouting();
 
-app.UseAuthorization();
+_ = app.UseRouting();
 
-app.MapStaticAssets();
+_ = app.UseAuthorization();
+
+_ = app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "blog-post",
@@ -31,8 +32,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-app.MapDefaultEndpoints();
+_ = app.MapDefaultEndpoints();
 
-app.MapInfoEndpoint();
+_ = app.MapInfoEndpoint();
 
 app.Run();

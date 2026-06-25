@@ -14,7 +14,9 @@ public class BlogController : Controller
     {
         var post = BlogPost.All.FirstOrDefault(p => p.Slug == slug);
         if (post is null)
+        {
             return NotFound();
+        }
 
         ViewData["Title"] = post.Title;
         ViewData["BlogPost"] = post;
