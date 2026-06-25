@@ -33,6 +33,7 @@ dotnet_style_prefer_auto_properties = true:warning
 dotnet_style_null_propagation = true:warning
 dotnet_style_namespace_match_folder = true:warning
 
+dotnet_diagnostic.IDE0011.severity = warning
 [*.g.cs]
 dotnet_analyzer_diagnostic.severity = none
 
@@ -44,3 +45,4 @@ dotnet_analyzer_diagnostic.severity = none
 
 [*.AssemblyInfo.cs]
 dotnet_analyzer_diagnostic.severity = none
+
