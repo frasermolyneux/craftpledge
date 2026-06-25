@@ -2,7 +2,16 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
+      "label": "dotnet: clean",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "clean",
+        "${workspaceFolder}/src/MX.CraftPledge.sln"
+      ]
+    },
+    {
+      "label": "dotnet: build",
       "command": "dotnet",
       "type": "process",
       "args": [
@@ -18,7 +27,42 @@
       }
     },
     {
-      "label": "run-apphost",
+      "label": "dotnet: test",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "test",
+        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "--filter",
+        "FullyQualifiedName!~IntegrationTests"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "dotnet: format",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "format",
+        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "--verify-no-changes"
+      ]
+    },
+    {
+      "label": "dotnet: publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/src/MX.CraftPledge.Web/MX.CraftPledge.Web.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "dotnet: run-apphost",
       "command": "dotnet",
       "type": "process",
       "args": [
@@ -28,10 +72,10 @@
       ],
       "problemMatcher": "$msCompile",
       "isBackground": true,
-      "dependsOn": "build"
+      "dependsOn": "dotnet: build"
     },
     {
-      "label": "run-web",
+      "label": "dotnet: run-web",
       "command": "dotnet",
       "type": "process",
       "args": [
@@ -41,10 +85,10 @@
       ],
       "problemMatcher": "$msCompile",
       "isBackground": true,
-      "dependsOn": "build"
+      "dependsOn": "dotnet: build"
     },
     {
-      "label": "watch-web",
+      "label": "dotnet: watch-web",
       "command": "dotnet",
       "type": "process",
       "args": [

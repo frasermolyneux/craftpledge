@@ -6,14 +6,14 @@
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj",
-      "preLaunchTask": "build"
+      "preLaunchTask": "dotnet: build"
     },
     {
       "name": "Run Web Only",
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/src/MX.CraftPledge.Web/MX.CraftPledge.Web.csproj",
-      "preLaunchTask": "build"
+      "preLaunchTask": "dotnet: build"
     }
   ]
 }
