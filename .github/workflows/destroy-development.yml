@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
-      - uses: frasermolyneux/actions/terraform-destroy@terraform-destroy/v1.2
+      - uses: frasermolyneux/actions/terraform-destroy@terraform-destroy/v1.3
         with:
           terraform-folder: "terraform"
           terraform-var-file: "tfvars/dev.tfvars"
