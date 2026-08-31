@@ -1,5 +1,5 @@
 
-# Shared Copilot configuration checked out during copilot-setup-steps
+# Local reference checkout of the shared Copilot configuration catalog (not used by CI)
 .github-copilot/
 
 # .NET build artifacts
