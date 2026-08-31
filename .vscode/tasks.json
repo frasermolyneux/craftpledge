@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "clean",
-        "${workspaceFolder}/src/MX.CraftPledge.sln"
+        "${workspaceFolder}/src/MX.CraftPledge.slnx"
       ]
     },
     {
@@ -16,7 +16,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "${workspaceFolder}/src/MX.CraftPledge.slnx",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary;ForceNoAlign"
       ],
@@ -32,7 +32,7 @@
       "type": "process",
       "args": [
         "test",
-        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "${workspaceFolder}/src/MX.CraftPledge.slnx",
         "--filter",
         "FullyQualifiedName!~IntegrationTests"
       ],
@@ -47,7 +47,7 @@
       "type": "process",
       "args": [
         "format",
-        "${workspaceFolder}/src/MX.CraftPledge.sln",
+        "${workspaceFolder}/src/MX.CraftPledge.slnx",
         "--verify-no-changes"
       ]
     },
