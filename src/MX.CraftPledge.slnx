@@ -1,0 +1,12 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj" />
+  <Project Path="MX.CraftPledge.ServiceDefaults/MX.CraftPledge.ServiceDefaults.csproj" />
+  <Project Path="MX.CraftPledge.Web/MX.CraftPledge.Web.csproj" />
+</Solution>

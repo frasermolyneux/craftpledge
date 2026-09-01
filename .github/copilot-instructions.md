@@ -18,7 +18,7 @@
 
 ## Build and Test
 
-- Build: `dotnet build src/MX.CraftPledge.sln`
+- Build: `dotnet build src/MX.CraftPledge.slnx`
 - Run: `dotnet run --project src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj`
 - No unit tests exist in this solution currently.
 

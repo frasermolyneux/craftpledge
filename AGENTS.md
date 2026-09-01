@@ -7,9 +7,9 @@ This is the portable execution brief for agents running without the local VS Cod
 ## Build, test, format
 
 ```pwsh
-dotnet build src/MX.CraftPledge.sln
-dotnet test src/MX.CraftPledge.sln
-dotnet format src/MX.CraftPledge.sln --verify-no-changes
+dotnet build src/MX.CraftPledge.slnx
+dotnet test src/MX.CraftPledge.slnx
+dotnet format src/MX.CraftPledge.slnx --verify-no-changes
 dotnet run --project src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj
 
 terraform -chdir=terraform fmt -check -recursive
