@@ -23,7 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.repository }}-${{ inputs.environment }}
+      cancel-in-progress: false
     steps:
+      - name: Azure Login
+        uses: azure/login@f5d393ae46f8fde4be8b75f32e3fc50e654ad0ca
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
       - uses: frasermolyneux/actions/terraform-destroy@terraform-destroy/v1.3
         with:
           terraform-folder: "terraform"
@@ -32,3 +40,49 @@ jobs:
           AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Remove automatically recreated Failure Anomalies rule
+        if: inputs.environment == 'dev'
+        shell: bash
+        run: |
+          smart_detector_id="/subscriptions/${{ vars.AZURE_SUBSCRIPTION_ID }}/resourceGroups/rg-craftpledge-dev-swedencentral/providers/Microsoft.AlertsManagement/smartDetectorAlertRules/Failure Anomalies - ai-craftpledge-dev-swedencentral"
+
+          if az resource show --ids "$smart_detector_id" --api-version 2021-04-01 --only-show-errors >/dev/null 2>&1; then
+            echo "Deleting $smart_detector_id"
+            az resource delete --ids "$smart_detector_id" --api-version 2021-04-01 --only-show-errors
+          fi
+
+      - name: Assert development resource group is empty
+        if: inputs.environment == 'dev'
+        shell: bash
+        run: |
+          resource_group="rg-craftpledge-dev-swedencentral"
+          service_plan_id="/subscriptions/${{ vars.AZURE_SUBSCRIPTION_ID }}/resourceGroups/$resource_group/providers/Microsoft.Web/serverfarms/asp-craftpledge-dev-swedencentral-default"
+
+          for attempt in {1..6}; do
+            remaining_resource_ids="$(az resource list --resource-group "$resource_group" --query "[].id" --output tsv --only-show-errors)"
+            service_plan_exists=false
+
+            if az resource show --ids "$service_plan_id" --only-show-errors >/dev/null 2>&1; then
+              service_plan_exists=true
+            fi
+
+            if [ -z "$remaining_resource_ids" ] && [ "$service_plan_exists" = false ]; then
+              echo "Development resource group contains no workload resources."
+              exit 0
+            fi
+
+            if [ "$attempt" -lt 6 ]; then
+              echo "Resources remain after destroy; retrying inventory assertion in 10 seconds."
+              sleep 10
+            fi
+          done
+
+          echo "::error::Development destroy left Azure resources behind."
+          if [ -n "$remaining_resource_ids" ]; then
+            printf '%s\n' "$remaining_resource_ids"
+          fi
+          if [ "$service_plan_exists" = true ] && ! grep -Fqx "$service_plan_id" <<< "$remaining_resource_ids"; then
+            echo "$service_plan_id"
+          fi
+          exit 1

@@ -25,9 +25,9 @@
 ## Infrastructure
 
 Terraform under `terraform/`, per-environment configs in `backends/` and `tfvars/`:
-- Azure Linux Web App (.NET 10.0) on the shared `platform-hosting` App Service Plan, Application Insights, DNS records.
+- Azure Linux Web App (.NET 10.0), Application Insights, and DNS records. Development owns a B1 App Service Plan; production uses the shared `platform-hosting` plan.
 - Providers: AzureRM ~> 5.2, Terraform >= 1.15.6.
-- Remote state dependencies: `platform-monitoring` (Log Analytics workspace), `platform-hosting` (App Service Plan).
+- Remote state dependencies: `platform-monitoring` (Log Analytics workspace) in both environments; `platform-hosting` (App Service Plan) in production only.
 - Health check endpoint: `/api/health/live`.
 
 ## CI/CD
