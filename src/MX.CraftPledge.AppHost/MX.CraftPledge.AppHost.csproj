@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MX.CraftPledge.Web\MX.CraftPledge.Web.csproj" />
+    <PackageReference Include="MessagePack" Version="2.5.303" />
   </ItemGroup>
 
   <PropertyGroup>
