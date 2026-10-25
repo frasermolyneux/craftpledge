@@ -13,7 +13,7 @@ dotnet format src/MX.CraftPledge.slnx --verify-no-changes
 dotnet run --project src/MX.CraftPledge.AppHost/MX.CraftPledge.AppHost.csproj
 
 terraform -chdir=terraform fmt -check -recursive
-terraform -chdir=terraform init -backend-config=backends/dev.backend.hcl
+terraform -chdir=terraform init -lockfile=readonly -backend-config=backends/dev.backend.hcl
 terraform -chdir=terraform validate
 terraform -chdir=terraform plan -var-file=tfvars/dev.tfvars
 ```
