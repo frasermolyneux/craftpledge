@@ -26,7 +26,7 @@
 
 Terraform under `terraform/`, per-environment configs in `backends/` and `tfvars/`:
 - Azure Linux Web App (.NET 10.0), Application Insights, and DNS records. Development owns a B1 App Service Plan; production uses the shared `platform-hosting` plan.
-- Providers: AzureRM ~> 5.2, Terraform >= 1.15.6.
+- CLI compatibility and provider bounds are authoritative in `terraform/providers.tf`; use the committed root CLI pin and provider lock for exact selections.
 - Remote state dependencies: `platform-monitoring` (Log Analytics workspace) in both environments; `platform-hosting` (App Service Plan) in production only.
 - Health check endpoint: `/api/health/live`.
 
@@ -37,3 +37,7 @@ Workflows in `.github/workflows/` use reusable actions from `frasermolyneux/acti
 - `deploy-dev.yml` / `deploy-prd.yml` - manual dev deploy / full dev→prd pipeline on main push.
 - `codequality.yml` - scheduled code quality analysis.
 - Branch naming: `feature/*`, `bugfix/*`, `hotfix/*`.
+
+## Terraform toolchain
+
+Commit each root's `.terraform-version` and `.terraform.lock.hcl`. Select the exact root CLI pin before invoking Terraform; normal initialization uses `-lockfile=readonly`. Regenerate provider selections only in a reviewed dependency-update PR; never commit state, plans, or `.terraform/`.

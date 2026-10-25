@@ -8,7 +8,7 @@ permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build-and-test:
@@ -41,7 +41,7 @@ jobs:
       AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
     steps:
-      - uses: frasermolyneux/actions/terraform-plan@terraform-plan/v1.4
+      - uses: frasermolyneux/actions/terraform-plan@terraform-plan/v2.0.0
         with:
           terraform-folder: "terraform"
           terraform-var-file: "tfvars/dev.tfvars"
@@ -49,3 +49,24 @@ jobs:
           AZURE_CLIENT_ID: ${{ env.AZURE_CLIENT_ID }}
           AZURE_TENANT_ID: ${{ env.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ env.AZURE_SUBSCRIPTION_ID }}
+
+  terraform-plan-prd:
+    if: github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    environment: Production
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.repository }}-prd
+      cancel-in-progress: false
+    steps:
+      - uses: frasermolyneux/actions/terraform-plan@terraform-plan/v2.0.0
+        with:
+          terraform-folder: terraform
+          terraform-var-file: tfvars/prd.tfvars
+          terraform-backend-file: backends/prd.backend.hcl
+          AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
