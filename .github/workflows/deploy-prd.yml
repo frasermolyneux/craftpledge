@@ -166,6 +166,9 @@ jobs:
     if: |
       !failure() && !cancelled() && (needs.terraform-plan-and-apply-dev.result == 'success' || github.event_name == 'schedule')
     runs-on: ubuntu-latest
+    env:
+      TF_CLI_ARGS_plan: -lock-timeout=10m
+      TF_CLI_ARGS_apply: -lock-timeout=10m
     concurrency:
       group: ${{ github.repository }}-prd
       cancel-in-progress: false
