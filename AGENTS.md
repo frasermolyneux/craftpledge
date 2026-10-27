@@ -1,8 +1,8 @@
-# AGENTS.md — craftpledge
+# AGENTS.md â€” craftpledge
 
 .NET 10 Aspire brochure site for CraftPledge: ASP.NET Core MVC front end plus Aspire AppHost/ServiceDefaults, Terraform-managed Azure hosting, and a static blog under `Views/Blog`.
 
-This is the portable execution brief for agents running without the local VS Code multi-root workspace context. `.github/copilot-instructions.md` is the authoritative source for project orientation, patterns, and CI/CD — read it first. Use `.github/instructions/blog-authoring.instructions.md` when creating or editing blog posts.
+This is the portable execution brief for agents running without the local VS Code multi-root workspace context. `.github/copilot-instructions.md` is the authoritative source for project orientation, patterns, and CI/CD â€” read it first. Use `.github/instructions/blog-authoring.instructions.md` when creating or editing blog posts.
 
 ## Build, test, format
 
@@ -20,10 +20,10 @@ terraform -chdir=terraform plan -var-file=tfvars/dev.tfvars
 
 ## Boundaries
 
-- Brochure site: no database, no authentication, no dynamic backend persistence — don't introduce these without an explicit task.
+- Brochure site: no database, no authentication, no dynamic backend persistence â€” don't introduce these without an explicit task.
 - Web project takes no external NuGet packages beyond the ServiceDefaults project reference.
 - Don't hand-edit vendored assets under `wwwroot/lib`.
-- No client secrets, connection strings, or hard-coded subscription IDs/GUIDs — Azure auth is OIDC + managed identity only.
+- No client secrets, connection strings, or hard-coded subscription IDs/GUIDs â€” Azure auth is OIDC + managed identity only.
 - Don't change Azure resource naming/tagging conventions.
 - Don't modify `.github/workflows/`, `.github/dependabot.yml`, `version.json`, or `Directory.Build.props` unless that is the explicit task.
 
@@ -32,4 +32,4 @@ terraform -chdir=terraform plan -var-file=tfvars/dev.tfvars
 - Assume tools/SDKs are installed beyond what `.github/workflows/copilot-setup-steps.yml` provisions.
 
 
-CI-only main pushes run change detection but skip cloud/backend deployment jobs. Automatic deployment requires a change to the workload inputs already declared by the deployment filters; scheduled maintenance and explicit workflow dispatch retain their existing behavior. A deployment-workflow-only change requires explicit dispatch to exercise cloud operations.
+CI-only main pushes are excluded by deployment push-path filters before workflow concurrency; they do not enqueue or displace cloud/backend deployments. Automatic deployment requires a change to the workload inputs already declared by the deployment filters; scheduled maintenance and explicit workflow dispatch retain their existing behavior. A deployment-workflow-only change requires explicit dispatch to exercise cloud operations.
