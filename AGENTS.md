@@ -30,3 +30,6 @@ terraform -chdir=terraform plan -var-file=tfvars/dev.tfvars
 ## Do NOT
 
 - Assume tools/SDKs are installed beyond what `.github/workflows/copilot-setup-steps.yml` provisions.
+
+
+CI-only main pushes are excluded by deployment push-path filters before workflow concurrency; they do not enqueue or displace cloud/backend deployments. Automatic deployment requires a change to the workload inputs already declared by the deployment filters; scheduled maintenance and explicit workflow dispatch retain their existing behavior. A deployment-workflow-only change requires explicit dispatch to exercise cloud operations.
