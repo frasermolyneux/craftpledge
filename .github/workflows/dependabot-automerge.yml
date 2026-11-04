@@ -8,7 +8,7 @@ on:
 permissions: {}
 
 jobs:
-  auto-merge-policy:
+  dependabot-policy:
     permissions:
       contents: read
       issues: write
@@ -25,12 +25,12 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
   auto-merge:
     needs:
-      - auto-merge-policy
+      - dependabot-policy
     permissions:
       contents: write
       pull-requests: write
     runs-on: ubuntu-latest
-    if: ${{ needs.auto-merge-policy.outputs.auto_merge_allowed == 'true' }}
+    if: ${{ needs.dependabot-policy.outputs.auto_merge_allowed == 'true' }}
     steps:
       - name: Enable auto-merge for approved bot PRs
         run: gh pr merge --auto --squash --match-head-commit "$PR_HEAD_SHA" "$PR_URL"
