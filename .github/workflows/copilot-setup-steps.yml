@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Copilot setup
-        uses: frasermolyneux/actions/copilot-setup@copilot-setup/v2
+        uses: frasermolyneux/actions/copilot-setup@67474edecb94ff248214815174c507e2daac324c # copilot-setup/v2.0.0
         with:
           checkout-repo: 'false'
           setup-dotnet: 'true'
