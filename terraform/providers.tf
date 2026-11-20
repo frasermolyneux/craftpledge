@@ -6,6 +6,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 5.12.0"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 5.29.0"
+    }
     time = {
       source  = "hashicorp/time"
       version = "~> 0.14.0"
@@ -14,6 +18,8 @@ terraform {
 
   backend "azurerm" {}
 }
+
+provider "cloudflare" {}
 
 provider "azurerm" {
   subscription_id = var.subscription_id

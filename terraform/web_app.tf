@@ -53,8 +53,8 @@ resource "azurerm_app_service_custom_hostname_binding" "primary" {
   resource_group_name = azurerm_linux_web_app.app.resource_group_name
 
   depends_on = [
-    azurerm_dns_txt_record.app_service_verification,
-    azurerm_dns_cname_record.web_app
+    cloudflare_dns_record.app_service_verification,
+    cloudflare_dns_record.web_app
   ]
 }
 
@@ -71,7 +71,7 @@ resource "azurerm_app_service_managed_certificate" "primary" {
 
   depends_on = [
     time_sleep.wait_for_hostname_binding,
-    azurerm_dns_cname_record.web_app
+    cloudflare_dns_record.web_app
   ]
 }
 

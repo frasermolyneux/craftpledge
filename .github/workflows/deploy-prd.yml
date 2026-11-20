@@ -88,6 +88,8 @@ jobs:
     steps:
       - if: needs.detect-changes.outputs.terraform == 'true' || needs.terraform-state-check-dev.outputs.has_resources != 'true'
         uses: frasermolyneux/actions/terraform-plan-and-apply@027d7e31bb32b734090aaed01b36d74f1d658b61 # terraform-plan-and-apply/v5.0.0
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_KEY }}
         with:
           terraform-folder: "terraform"
           terraform-var-file: "tfvars/dev.tfvars"
@@ -178,6 +180,8 @@ jobs:
     steps:
       - if: needs.detect-changes.outputs.terraform == 'true'
         uses: frasermolyneux/actions/terraform-plan-and-apply@027d7e31bb32b734090aaed01b36d74f1d658b61 # terraform-plan-and-apply/v5.0.0
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_KEY }}
         with:
           terraform-folder: "terraform"
           terraform-var-file: "tfvars/prd.tfvars"
