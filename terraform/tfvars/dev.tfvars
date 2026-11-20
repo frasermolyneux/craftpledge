@@ -18,6 +18,7 @@ dns = {
   resource_group_name = "rg-platform-dns-prd-uksouth-01"
   domain              = "craftpledge.org"
   subdomain           = "dev"
+  zone_id             = "4d4b5640294da5e5579e0cb311a02bf1"
 }
 
 tags = {

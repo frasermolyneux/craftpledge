@@ -44,6 +44,7 @@ variable "dns" {
     resource_group_name = string
     domain              = string
     subdomain           = string
+    zone_id             = string
   })
 }
 
